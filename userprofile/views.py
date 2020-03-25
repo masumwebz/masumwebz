@@ -1,6 +1,15 @@
 from django.shortcuts import render
-from .django.views.generic import TemplateView
+from django.views.generic import CreateView
 
-# Create your views here.
-class dashboardView(TemplateView):
-    template_name= 'dashboard/home.html'
+from django.urls import reverse_lazy
+from .forms import SignUpForm
+
+
+
+
+
+# signup view
+class SignupView(CreateView):
+    form_class = SignUpForm
+    success_url = reverse_lazy('dashboard')
+    template_name = 'users/register.html'
